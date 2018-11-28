@@ -1,0 +1,25 @@
+{
+    "name": "cakephp-extended/Accounts",
+    "description": "Accounts plugin for CakePHP 3",
+    "type": "cakephp-app-plugin",
+    "license": "MIT",
+    "require": {
+        "cakephp/cakephp": "^3.5",
+        "cakephp-extended/custom": "^1.0",
+        "cakephp-extended/plugin-app-installer": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7.14|^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Accounts\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Accounts\\Test\\": "tests/",
+            "Cake\\Test\\": "vendor/cakephp/cakephp/tests/"
+        }
+    }
+}
