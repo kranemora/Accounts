@@ -24,7 +24,8 @@
         <legend><?= __('Edit User') ?></legend>
         <?php
             echo $this->Form->control('username');
-            echo $this->Form->control('password');
+            echo $this->Form->control('password', ['value' => '']);
+            echo $this->Form->control('confirm_password', ['type' => 'password', 'value' => '']);
             echo $this->Form->control('given_name');
             echo $this->Form->control('last_name');
             echo $this->Form->control('first_name');

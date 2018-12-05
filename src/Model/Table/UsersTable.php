@@ -79,8 +79,28 @@ class UsersTable extends Table
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password', NULL, 'create')
+			->add('password', [
+				'lengthBetween' => [
+				    'rule' => ['lengthBetween', 4, 255],
+				    'message' => 'El campo debe contener entre 6 y 255 caracteres.',
+				],
+			]);
 
+        $validator
+            ->scalar('confirm_password')
+            ->maxLength('confirm_password', 255)
+            ->requirePresence('confirm_password', 'create')
+            ->notEmpty('confirm_password', 'La contraseña ingresada requiere confirmación', function ($context) {
+                return (isset($context['data']['password']) && strlen($context['data']['password']) != 0);
+            })
+			->add('confirm_password', [
+				'compareWith' => [
+				    'rule' => ['compareWith', 'password'],
+                    'message' => 'El valor del campo con coincide con la contraseña ingresada.'
+				],
+			]);
+        
         $validator
             ->scalar('given_name')
             ->maxLength('given_name', 255)

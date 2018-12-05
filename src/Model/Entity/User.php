@@ -2,6 +2,7 @@
 namespace Accounts\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\Core\Configure;
 
 /**
  * User Entity
@@ -71,4 +72,20 @@ class User extends Entity
         'password',
         'token'
     ];
+    
+	protected function _setPassword($value)
+    {
+        if (strlen($value)) { // Si el password no está vacío
+            $class = call_user_func_array(array('\\Cake\\Core\\App', 'className'), Configure::read('Accounts.passwordHasher'));
+            $hasher = new $class;
+            return $hasher->hash($value);
+        } else { // Si el password está vacío
+            if ($this->isNew()) { // Si el registro es nuevo se devuelve el valor vacío para que se pueda validar
+              return $value;
+            } else { // Si el registro ya existía se devuelve el valor original
+              return $this->getOriginal('password');
+            }
+            
+        }
+    }
 }

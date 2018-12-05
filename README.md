@@ -34,3 +34,10 @@ Luego de instalar el plugin, cree la base de datos ejecutando el siguiente coman
 ```
 bin/cake migrations migrate -p Accounts
 ```
+
+Configure el passwordHasher en el archivo bootstrap.php modificando:
+
+```
+Configure::write('Accounts.passwordHasher', ['DefaultPasswordHasher', 'Auth'])
+```
+El valor de la variable Account.passwordHasher debe contener los argumentos para la función App::className, que permitirá importar los archivos requeridos
