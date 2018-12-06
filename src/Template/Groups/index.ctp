@@ -22,7 +22,6 @@
                 <th scope="col"><?= $this->Paginator->sort('parent_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('lockhash') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -34,7 +33,6 @@
                 <td><?= $group->has('parent_group') ? $this->Html->link($group->parent_group->name, ['controller' => 'Groups', 'action' => 'view', $group->parent_group->id]) : '' ?></td>
                 <td><?= h($group->created) ?></td>
                 <td><?= h($group->modified) ?></td>
-                <td><?= h($group->lockhash) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $group->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $group->id]) ?>

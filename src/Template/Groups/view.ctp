@@ -31,10 +31,6 @@
             <td><?= $group->has('parent_group') ? $this->Html->link($group->parent_group->name, ['controller' => 'Groups', 'action' => 'view', $group->parent_group->id]) : '' ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Lockhash') ?></th>
-            <td><?= h($group->lockhash) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($group->id) ?></td>
         </tr>
@@ -70,7 +66,6 @@
                 <th scope="col"><?= __('Enabled') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col"><?= __('Lockhash') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($group->users as $users): ?>
@@ -93,7 +88,6 @@
                 <td><?= h($users->enabled) ?></td>
                 <td><?= h($users->created) ?></td>
                 <td><?= h($users->modified) ?></td>
-                <td><?= h($users->lockhash) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $users->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $users->id]) ?>
@@ -114,7 +108,6 @@
                 <th scope="col"><?= __('Parent Id') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col"><?= __('Lockhash') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($group->child_groups as $childGroups): ?>
@@ -124,7 +117,6 @@
                 <td><?= h($childGroups->parent_id) ?></td>
                 <td><?= h($childGroups->created) ?></td>
                 <td><?= h($childGroups->modified) ?></td>
-                <td><?= h($childGroups->lockhash) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Groups', 'action' => 'view', $childGroups->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Groups', 'action' => 'edit', $childGroups->id]) ?>

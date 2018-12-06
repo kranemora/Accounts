@@ -27,7 +27,6 @@
         <?php
             echo $this->Form->control('name');
             echo $this->Form->control('parent_id', ['options' => $parentGroups, 'empty' => true]);
-            echo $this->Form->control('lockhash');
             echo $this->Form->control('users._ids', ['options' => $users]);
         ?>
     </fieldset>

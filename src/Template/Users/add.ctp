@@ -33,7 +33,6 @@
             echo $this->Form->control('token');
             echo $this->Form->control('activated');
             echo $this->Form->control('enabled');
-            echo $this->Form->control('lockhash');
             echo $this->Form->control('groups._ids', ['options' => $groups]);
         ?>
     </fieldset>

@@ -67,10 +67,6 @@
             <td><?= h($user->token) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Lockhash') ?></th>
-            <td><?= h($user->lockhash) ?></td>
-        </tr>
-        <tr>
             <th scope="row"><?= __('Id') ?></th>
             <td><?= $this->Number->format($user->id) ?></td>
         </tr>
@@ -105,7 +101,6 @@
                 <th scope="col"><?= __('Parent Id') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
                 <th scope="col"><?= __('Modified') ?></th>
-                <th scope="col"><?= __('Lockhash') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
             <?php foreach ($user->groups as $groups): ?>
@@ -115,7 +110,6 @@
                 <td><?= h($groups->parent_id) ?></td>
                 <td><?= h($groups->created) ?></td>
                 <td><?= h($groups->modified) ?></td>
-                <td><?= h($groups->lockhash) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['controller' => 'Groups', 'action' => 'view', $groups->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['controller' => 'Groups', 'action' => 'edit', $groups->id]) ?>
