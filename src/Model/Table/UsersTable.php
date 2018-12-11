@@ -5,6 +5,9 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Custom\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\EntityInterface;
+use Cake\Event\Event;
+use ArrayObject;
 
 /**
  * Users Model
@@ -185,5 +188,50 @@ class UsersTable extends Table
         $rules->add($rules->existsIn(['group_id'], 'Groups'));
 
         return $rules;
+    }
+
+    public function beforeMarshal(Event $event, ArrayObject $data, ArrayObject $options)
+    {
+    
+        if(strlen($data['given_name']) == 0) {
+            if(strlen($data['first_name']) != 0) {
+                $data['given_name'] = $data['first_name'];
+                if (strlen($data['middle_name']) != 0) {
+                    $data['given_name'] .= ' '.$data['middle_name'];
+                }
+            }
+        } else {
+            $data['first_name'] = '';
+            $data['middle_name'] = '';
+        }
+        
+        if(strlen($data['last_name']) == 0) {
+            if(strlen($data['paternal_surname']) != 0) {
+                $data['last_name'] = $data['paternal_surname'];
+                if (strlen($data['maternal_surname']) != 0) {
+                    $data['last_name'] .= ' '.$data['maternal_surname'];
+                }
+            }
+        } else {
+            $data['paternal_surname'] = '';
+            $data['maternal_surname'] = '';
+        }
+        
+        if(strlen($data['full_name']) == 0) {
+            if(strlen($data['given_name']) != 0) {
+                $data['full_name'] = $data['given_name'];
+                if (strlen($data['last_name']) != 0) {
+                    $data['full_name'] .= ' '.$data['last_name'];
+                }
+            }
+        } else {
+            $data['given_name'] = '';
+            $data['last_name'] = '';
+            $data['first_name'] = '';
+            $data['middle_name'] = '';
+            $data['paternal_surname'] = '';
+            $data['maternal_surname'] = '';
+        }
+        
     }
 }
