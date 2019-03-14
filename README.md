@@ -28,3 +28,9 @@ The recommended way to install composer packages is:
 ```
 composer require cakephp-extended/accounts
 ```
+
+Luego de instalar el plugin, cree la base de datos ejecutando el siguiente comando:
+
+```
+bin/cake migrations migrate -p Accounts
+```

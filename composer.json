@@ -1,5 +1,5 @@
 {
-    "name": "cakephp-extended/Accounts",
+    "name": "cakephp-extended/accounts",
     "description": "Accounts plugin for CakePHP 3",
     "type": "cakephp-app-plugin",
     "license": "MIT",
